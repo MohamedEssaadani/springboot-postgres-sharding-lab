@@ -1,0 +1,51 @@
+{
+  "permissions": {
+    "defaultMode": "default",
+    "ask": [
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git reset *)",
+      "Bash(git clean *)",
+      "Bash(git restore *)",
+      "Bash(git checkout *)",
+      "Bash(git rebase *)",
+      "Bash(git merge *)",
+      "Bash(git rm *)",
+      "Bash(rm *)",
+      "PowerShell(git commit *)",
+      "PowerShell(git push *)",
+      "PowerShell(git reset *)",
+      "PowerShell(git clean *)",
+      "PowerShell(git restore *)",
+      "PowerShell(git checkout *)",
+      "PowerShell(git rebase *)",
+      "PowerShell(git merge *)",
+      "PowerShell(git rm *)",
+      "PowerShell(rm *)",
+      "PowerShell(Remove-Item *)",
+      "Bash(docker compose down -v*)",
+      "Bash(docker compose down --volumes*)",
+      "Bash(docker volume rm *)",
+      "Bash(docker volume prune*)",
+      "Bash(docker system prune*)",
+      "PowerShell(docker compose down -v*)",
+      "PowerShell(docker compose down --volumes*)",
+      "PowerShell(docker volume rm *)",
+      "PowerShell(docker volume prune*)",
+      "PowerShell(docker system prune*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(./**/.env)",
+      "Read(./**/.env.*)",
+      "Read(./**/secrets/**)",
+      "Read(./**/credentials.json)",
+      "Bash(cat *.env*)",
+      "Bash(cat *secrets/*)",
+      "PowerShell(Get-Content *.env*)",
+      "PowerShell(Get-Content *secrets*)",
+      "PowerShell(type *.env*)"
+    ]
+  }
+}
