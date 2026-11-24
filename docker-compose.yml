@@ -1,0 +1,42 @@
+services:
+  shard0:
+    image: postgres:17
+    container_name: shard0
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${SHARD0_DB}
+      POSTGRES_USER: ${SHARD0_USER}
+      POSTGRES_PASSWORD: ${SHARD0_PASSWORD}
+    ports:
+      - "127.0.0.1:${SHARD0_PORT}:5432"
+    volumes:
+      - shard0_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  shard1:
+    image: postgres:17
+    container_name: shard1
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${SHARD1_DB}
+      POSTGRES_USER: ${SHARD1_USER}
+      POSTGRES_PASSWORD: ${SHARD1_PASSWORD}
+    ports:
+      - "127.0.0.1:${SHARD1_PORT}:5432"
+    volumes:
+      - shard1_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+volumes:
+  shard0_data:
+  shard1_data:
