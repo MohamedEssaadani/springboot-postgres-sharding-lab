@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: sharding-lab
+  config:
+    # Docker Compose and Spring share one source of truth for shard credentials.
+    # Path is relative to the working directory (run from the repository root).
+    import: optional:file:.env[.properties]
+
+sharding:
+  pool:
+    maximum-pool-size: 5
+    connection-timeout-ms: 3000
+  shards:
+    - id: 0
+      url: jdbc:postgresql://localhost:${SHARD0_PORT}/${SHARD0_DB}
+      username: ${SHARD0_USER}
+      password: ${SHARD0_PASSWORD}
+    - id: 1
+      url: jdbc:postgresql://localhost:${SHARD1_PORT}/${SHARD1_DB}
+      username: ${SHARD1_USER}
+      password: ${SHARD1_PASSWORD}
