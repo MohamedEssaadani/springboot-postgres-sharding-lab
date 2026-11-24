@@ -19,3 +19,5 @@ sharding:
       url: jdbc:postgresql://localhost:${SHARD1_PORT}/${SHARD1_DB}
       username: ${SHARD1_USER}
       password: ${SHARD1_PASSWORD}
+server:
+  port: 8081
